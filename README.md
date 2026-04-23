@@ -173,7 +173,7 @@ src/
 
 ### Por qué Angular 20
 
-La versión 17 era el mínimo del PDF, pero Angular 20:
+Se usa Angular 20 por estas razones:
 
 - Es **LTS** hasta noviembre 2026
 - Trae **zoneless por defecto** — menor overhead, mejor rendimiento
@@ -187,12 +187,6 @@ La versión 17 era el mínimo del PDF, pero Angular 20:
 - Lazy loading más simple (`loadComponent` en la ruta)
 - Imports explícitos en cada componente — más claro qué depende de qué
 - Es el patrón recomendado oficialmente desde Angular 17
-
-### Por qué Signals para el estado
-
-El PDF pide "observables, servicios, componentes bien estructurados".
-Los **Signals** son la evolución moderna de los BehaviorSubjects para
-estado síncrono, y coexisten con RxJS para streams asíncronos (HTTP).
 
 - `AuthService.user()` y `AuthService.token()` son signals reactivos
 - El interceptor los lee sin subscribirse
@@ -323,12 +317,9 @@ Cada push a `main` dispara el workflow `deploy.yml` que:
 
 - Crear environment `production` con estos valores:
   - **Secret** `FIREBASE_TOKEN` — generado con `firebase login:ci`
-  - **Variable** `FIREBASE_PROJECT_ID` — `atom-challenge-88068`
+  - **Variable** `FIREBASE_PROJECT_ID` — `atom-challenge-xxxxx`
 
 ---
 
 ## 🔗 Enlaces
-
-- **Backend desplegado**: https://api-x5dkq5mztq-uc.a.run.app
 - **Repo del backend**: https://github.com/santo097/atom-challenge-backend
-- **Proyecto Firebase**: `atom-challenge-88068`
