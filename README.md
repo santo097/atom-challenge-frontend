@@ -296,7 +296,7 @@ deshabilitado. Esto previene:
 # Primera vez solamente
 npm install -g firebase-tools
 firebase login
-firebase use atom-challenge-88068
+firebase use atom-challenge-xxxxx
 
 # Cada deploy
 npm run build:prod
