@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.login-page {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: var(--page-padding);
+  // Gradient sutil usando el azul primario del tema
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(25, 118, 210, 0.08), transparent 70%),
+    var(--mat-sys-surface-container-lowest);
+
+  @media (max-width: 600px) {
+    padding: var(--page-padding-mobile);
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 1rem 0 1.5rem;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
+
+.login-header {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand-icon {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  // Naranja ATOM para el ícono del cohete — acento de marca
+  color: var(--atom-orange);
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: var(--font-heading-weight);
+  color: var(--mat-sys-on-surface);
+  letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-btn {
+  height: 48px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  mat-progress-spinner {
+    display: inline-block;
+  }
+}
+
+.login-footer {
+  padding: 0 1rem;
+  text-align: center;
+
+  small {
+    color: var(--mat-sys-on-surface-variant);
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}

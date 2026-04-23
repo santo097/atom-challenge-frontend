@@ -1,0 +1,70 @@
+name: Deploy to Firebase Hosting
+
+# Se dispara:
+#   - Automáticamente al push a main
+#   - Manualmente desde la pestaña Actions (botón "Run workflow")
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # -------------------------------------------------------------
+  # Pre-deploy: garantizar que todo compila y los tests pasan.
+  # -------------------------------------------------------------
+  pre-deploy-checks:
+    name: Pre-deploy checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeCheck
+        run: npx tsc --noEmit -p tsconfig.app.json
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build production
+        run: npm run build:prod
+
+  # -------------------------------------------------------------
+  # Deploy real a Firebase Hosting.
+  # Usa FIREBASE_TOKEN guardado como secret en GitHub.
+  # -------------------------------------------------------------
+  deploy:
+    name: Deploy to Firebase Hosting
+    needs: pre-deploy-checks
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production
+        run: npm run build:prod
+
+      - name: Deploy to Firebase Hosting
+        run: npx firebase-tools deploy --only hosting --project ${{ vars.FIREBASE_PROJECT_ID }} --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"

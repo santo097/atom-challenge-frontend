@@ -1,0 +1,6 @@
+{
+  "apiUrl": "https://api-x5dkq5mztq-uc.a.run.app/api/v1",
+  "environment": "production",
+  "version": "1.0.0",
+  "httpTimeoutMs": 30000
+}

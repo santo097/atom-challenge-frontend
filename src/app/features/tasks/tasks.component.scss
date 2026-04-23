@@ -1,0 +1,96 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+  background: var(--mat-sys-surface-container-lowest);
+}
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  // Usa el color primario del tema (azul Material)
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+}
+
+.toolbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  gap: 1rem;
+
+  @media (max-width: 600px) {
+    padding: 0 var(--page-padding-mobile);
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+
+  mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    // El cohete en naranja como guiño a la marca ATOM
+    color: var(--atom-orange-light);
+  }
+}
+
+.brand-title {
+  @media (max-width: 380px) {
+    display: none;
+  }
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-trigger {
+  padding: 4px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--mat-sys-on-primary);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.user-info {
+  font-size: 0.875rem;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.tasks-page {
+  padding: 2rem var(--page-padding);
+
+  @media (max-width: 600px) {
+    padding: 1rem var(--page-padding-mobile);
+  }
+}
+
+.content {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.form-section mat-card {
+  padding: 1rem;
+}
